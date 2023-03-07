@@ -106,6 +106,7 @@ function game(input) {
     displayResult.textContent = "It a tie! You can do this!";
   }
 
+// the game resets after someone reaches score of 5;  
   if (computerScore === 5) {
     alert ("GAME OVER, THE MACHINE HAS WON!");
     displayResult.textContent = "You've lost...";
