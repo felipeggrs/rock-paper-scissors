@@ -29,7 +29,11 @@
   padding: 5px;
 }
 
-.btnContainer {
+.btnContainer,
+#result,
+#playerScore,
+#computerScore,
+#currentSelections {
   display: flex;
   justify-content: center;
   margin: 10px;

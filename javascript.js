@@ -1,7 +1,7 @@
 let computerSelection = getComputerChoice();
 
 /*create a function called getComputerChoice*/
-function getComputerChoice(choice) {
+function getComputerChoice() {
 /*this function will generate a random number between 1-100*/
   choice = Math.floor(Math.random() * 100 + 1)
 /*depending on the number, the function will output 3 options = 
@@ -54,62 +54,74 @@ variable into play and compare it with the playerSelection variable*/
     }
   }
 
-//console.log("TEST:Computer:" + computerSelection)
-//console.log("TEST:" + playRound(playerSelection, computerSelection));
+let i = 1;
+let playerScore = 0;
+let computerScore = 0;
 
 /*create a new function called game() that calls the playRound 
-function inside it and plays 5 rounds of the game via a loop*/
+function inside it*/
 function game(input) {
-    let i = 1;
-    let playerScore = 0;
-    let computerScore = 0;
-
-/*this is a loop that assigns 0 to i and, while i < 5, increments it by 1.*/    
-//  for (let i = 0; i < 5; i++) {
-
-/*now set the variable again after each loop*/
     let playerSelection = input;
-      //prompt("Please choose between rock, paper or scissors for this round");
     let computerSelection = getComputerChoice();
     let result = playRound(playerSelection, computerSelection);
 
 /*if player wins, increment player score and update total score*/
     if (result.toString().includes("Player")) {
       ++playerScore;
-      console.log(`Round ${i}: Player selected ${playerSelection} ` + 
-                  `vs Computer Selected ${computerSelection}`);
-      console.log(`Player has a score of: ${playerScore}`)
+      currentSelections.textContent = `Round ${i}: Player chose ${playerSelection}; ` + 
+                  `Computer chose ${computerSelection}.`;
+      displayPlayerScore.textContent = `Player Score: ${playerScore}`;
+      displayComputerScore.textContent = `Computer Score: ${computerScore}`;
 
       score = (`${playerScore} vs ${computerScore}`);
       console.log(`Current score: ${score}`);
+      i++
 
 /*if computer wins, increment computer score and update total*/
     } else if (result.toString().includes("Computer")) {
       ++computerScore;
-      console.log(`Round ${i}: Player selected ${playerSelection} ` +
-                  `vs Computer Selected ${computerSelection}`);
+      currentSelections.textContent = `Round ${i}: Player chose ${playerSelection}; ` +
+                  `Computer chose ${computerSelection}.`;
       
-      console.log(`Computer has a score of: ${computerScore}`)
+      displayPlayerScore.textContent = `Player Score: ${playerScore}`;
+      displayComputerScore.textContent = `Computer Score: ${computerScore}`;
 
       score = (`${playerScore} vs ${computerScore}`);
       console.log(`Current score: ${score}`);
+      i++
     } else {
       score = (`${playerScore} vs ${computerScore}`);
-      console.log(`Round ${i} was a tie! Both selected ${playerSelection}! ` +
-                  `Total score: ${score}`)
+      currentSelections.textContent = `Round ${i} was a tie! Both selected ${playerSelection}!`
+      console.log(`Current score: ${score}`);
+      displayPlayerScore.textContent = `Player Score: ${playerScore}`;
+      displayComputerScore.textContent = `Computer Score: ${computerScore}`;
+      i++
     }
-//  } 
-/*this gets the final result of the 5 loops and declares the winner*/
+/*says who's currently winning*/
   if (playerScore > computerScore) {
-    console.log("Final Result = PLAYER WON!!!");
+    displayResult.textContent = "YES! You are winning!";
   } else if (playerScore < computerScore) {
-    console.log("Final Result = Computer won... You suck!");
+    displayResult.textContent = "Oh no, the machine is winning!";
   } else {
-    console.log("Final Result = It was a tie.");
+    displayResult.textContent = "It a tie! You can do this!";
+  }
+
+  if (computerScore === 5) {
+    alert ("GAME OVER, THE MACHINE HAS WON!");
+    displayResult.textContent = "You've lost...";
+    playerScore = 0;
+    computerScore = 0;
+    i = 1;
+  } else if (playerScore === 5){
+    alert ("CONGRATULATIONS! YOU HAVE BEATEN THE MACHINE!");
+    displayResult.textContent = "You've won!";
+    playerScore = 0;
+    computerScore = 0;
+    i = 1;
   }
 }
 
-//Add an event listener to the buttons that call your playRound function with the correct playerSelection every time a button is clicked.
+// Add an event listener to the buttons that call your playRound function with the correct playerSelection every time a button is clicked.
 
 const buttons = document.querySelectorAll(".button");
 buttons.forEach(button => {
@@ -121,3 +133,9 @@ buttons.forEach(button => {
   button.addEventListener("click", () => {game("scissors")}); 
   }
 });
+
+// Add a div for displaying results and change all of your console.logs into DOM methods.
+const displayResult = document.getElementById("result");
+const displayPlayerScore = document.getElementById("playerScore");
+const displayComputerScore = document.getElementById("computerScore");
+const currentSelections = document.getElementById("currentSelections");
