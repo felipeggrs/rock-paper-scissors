@@ -59,17 +59,17 @@ variable into play and compare it with the playerSelection variable*/
 
 /*create a new function called game() that calls the playRound 
 function inside it and plays 5 rounds of the game via a loop*/
-function game() {
-
+function game(input) {
+    let i = 1;
     let playerScore = 0;
     let computerScore = 0;
 
 /*this is a loop that assigns 0 to i and, while i < 5, increments it by 1.*/    
-  for (let i = 0; i < 5; i++) {
+//  for (let i = 0; i < 5; i++) {
 
 /*now set the variable again after each loop*/
-    let playerSelection = 
-      prompt("Please choose between rock, paper or scissors for this round");
+    let playerSelection = input;
+      //prompt("Please choose between rock, paper or scissors for this round");
     let computerSelection = getComputerChoice();
     let result = playRound(playerSelection, computerSelection);
 
@@ -98,7 +98,7 @@ function game() {
       console.log(`Round ${i} was a tie! Both selected ${playerSelection}! ` +
                   `Total score: ${score}`)
     }
-  } 
+//  } 
 /*this gets the final result of the 5 loops and declares the winner*/
   if (playerScore > computerScore) {
     console.log("Final Result = PLAYER WON!!!");
@@ -108,3 +108,16 @@ function game() {
     console.log("Final Result = It was a tie.");
   }
 }
+
+//Add an event listener to the buttons that call your playRound function with the correct playerSelection every time a button is clicked.
+
+const buttons = document.querySelectorAll(".button");
+buttons.forEach(button => {
+  if (button.id === "rock") {
+    button.addEventListener("click", () => {game("rock")}); 
+} else if ((button.id === "paper")){
+  button.addEventListener("click", () => {game("paper")}); 
+} else {
+  button.addEventListener("click", () => {game("scissors")}); 
+  }
+});
