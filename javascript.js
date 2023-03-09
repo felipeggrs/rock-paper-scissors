@@ -103,7 +103,7 @@ function game(input) {
   } else if (playerScore < computerScore) {
     displayResult.textContent = "Oh no, the machine is winning!";
   } else {
-    displayResult.textContent = "It a tie! You can do this!";
+    displayResult.textContent = "Come on, don't give up!";
   }
 
 // the game resets after someone reaches score of 5;  

@@ -6,24 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My RPS Game</title>
   <link rel="stylesheet" href="./styles.css">
+  <script src="./javascript.js" defer></script>
 </head>
 <body>
-  <script src="./javascript.js" defer></script>
-  <h1 class="gameTitle">Rock Paper Scissors</h1>
-  <div class="paraContainer">
-  <p class="paragraph">Hey! This is my Rock Paper Scissors game. I hope you enjoy playing it as I am loving to code it, <strong>for sure!</strong></p>
-  </div>
-  <div class="btnContainer">
-    <button class="button" id="rock">Rock</button>
-    <button class="button" id="paper">Paper</button>
-    <button class="button" id="scissors">Scissors</button>
-  </div>
+  <div class="mainContainer">
+    <h1 class="gameTitle">ℜ𝔬𝔠𝔨 𝔓𝔞𝔭𝔢𝔯 𝔖𝔠𝔦𝔰𝔰𝔬𝔯𝔰</h1>
+    <div class="paraContainer">
+    <p class="paragraph">Hey! This is my Rock Paper Scissors game. I hope you enjoy playing it as I am loving to code it, <strong>for sure!</strong></p>
+    </div>
+    <div class="btnContainer">
+      <button class="button" id="rock">ℜ𝔬𝔠𝔨</button>
+      <button class="button" id="paper">𝔓𝔞𝔭𝔢𝔯</button>
+      <button class="button" id="scissors">𝔖𝔠𝔦𝔰𝔰𝔬𝔯𝔰</button>
+    </div>
 
-  <div id="resultContainer">
-    <div id="currentSelections">Select a weapon to play!</div>
-    <div id="playerScore">Player Score: 0</div>
-    <div id="computerScore">Computer Score: 0</div>
-    <div id="result"></div>
+    <div id="resultContainer">
+      <div id="currentSelections">Select a weapon to play!</div>
+      <div id="result">Who shall win this battle?</div>
+      <div id="currentScores">
+        <div id="playerScore">Player Score: 0</div>
+        <div id="computerScore">Computer Score: 0</div>
+      </div>
+    </div>
+
+    <div class="footerContainer">
+      <div class="footer">Game made by FelipeGGRS</div>
+    </div>
   </div>
   
 </body>
